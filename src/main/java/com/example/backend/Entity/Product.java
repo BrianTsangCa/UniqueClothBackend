@@ -1,25 +1,37 @@
 package com.example.backend.Entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import java.time.LocalDateTime;
+
+import jakarta.persistence.*;
 
 @Entity
+@Table(name = "products")
 public class Product {
 
-	
-	
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long product_id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "product_id")
+	private int product_id;
 
-    private String name;
-    private String description;
-    private String category;
-    private double price;
-    private int stock;
-    private String image_url;
-    private String created_at;
-    
+	@Column(name = "name", nullable = false, length = 100)
+	private String name;
+
+	@Column(name = "description", length = 500)
+	private String description;
+
+	@Column(name = "category", nullable = false, length = 50)
+	private String category;
+
+	@Column(name = "price", nullable = false)
+	private double price;
+
+	@Column(name = "stock", nullable = false)
+	private int stock;
+
+	@Column(name = "image_url", length = 255)
+	private String image_url;
+
+	@Column(name = "created_at", nullable = false, updatable = false)
+	private LocalDateTime created_at;
+
 }
