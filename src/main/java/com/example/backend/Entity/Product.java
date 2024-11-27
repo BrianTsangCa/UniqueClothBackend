@@ -30,6 +30,10 @@ public class Product {
 
 	@Column(name = "image_url", length = 255)
 	private String image_url;
+	
+	@Enumerated(EnumType.STRING)
+	@Column(name = "status", nullable = false)
+	private ProductStatus status;
 
 	@Column(name = "created_at", nullable = false, updatable = false)
 	private LocalDateTime created_at;
